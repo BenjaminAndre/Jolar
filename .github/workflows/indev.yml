@@ -19,13 +19,6 @@ jobs:
     permissions: write-all
     # Job name, can be anything
     name: Export Game
-    strategy:
-      fail-fast: true
-      matrix:
-        channel:
-          - linux
-          - windows
-          - channel
     steps:
       # Always include the checkout step so that 
       # your project is available for Godot to export
@@ -62,4 +55,4 @@ jobs:
         gameData: bin/
         itchUsername: ${{env.ITCH_USERNAME}}
         itchGameId: ${{ env.ITCH_GAME_ID }}
-        buildChannel: ${{ matrix.channel }}
+        buildChannel: channel
