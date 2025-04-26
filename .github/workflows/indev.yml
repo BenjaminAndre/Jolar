@@ -23,7 +23,7 @@ jobs:
       fail-fast: true
       matrix:
         channel:
-          - HTML
+          - channel
     steps:
       # Always include the checkout step so that 
       # your project is available for Godot to export
@@ -57,7 +57,7 @@ jobs:
       uses: KikimoraGames/itch-publish@v0.0.3
       with:
         butlerApiKey: ${{secrets.BUTLER_API_KEY}}
-        gameData: bin/
+        gameData: bin/web
         itchUsername: ${{env.ITCH_USERNAME}}
         itchGameId: ${{ env.ITCH_GAME_ID }}
         buildChannel: ${{ matrix.channel }}
