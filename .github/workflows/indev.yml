@@ -55,4 +55,4 @@ jobs:
         gameData: bin/
         itchUsername: ${{env.ITCH_USERNAME}}
         itchGameId: ${{ env.ITCH_GAME_ID }}
-        buildChannel: channel
+        buildChannel: html5
