@@ -23,6 +23,8 @@ jobs:
       fail-fast: true
       matrix:
         channel:
+          - linux
+          - windows
           - channel
     steps:
       # Always include the checkout step so that 
@@ -45,19 +47,19 @@ jobs:
       # This release action has worked well for me. However, you can most likely use any release action of your choosing.
       # https://github.com/ncipollo/release-action
       # I don't need a release on GH when I can just push to Itch
- #   - name: create release
-  #    uses: ncipollo/release-action@v1.14.0
-   #   with:
-    #    token: ${{ secrets.GITHUB_TOKEN }}
-     #   generateReleaseNotes: true
-      #  tag: indev
-       # artifacts: ${{ steps.export.outputs.archive_directory }}/*
+    - name: create release
+      uses: ncipollo/release-action@v1.14.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        generateReleaseNotes: true
+        tag: indev
+        artifacts: ${{ steps.export.outputs.archive_directory }}/*
           
     - name: Push to Itch.io
       uses: KikimoraGames/itch-publish@v0.0.3
       with:
         butlerApiKey: ${{secrets.BUTLER_API_KEY}}
-        gameData: bin/web
+        gameData: bin/
         itchUsername: ${{env.ITCH_USERNAME}}
         itchGameId: ${{ env.ITCH_GAME_ID }}
         buildChannel: ${{ matrix.channel }}
