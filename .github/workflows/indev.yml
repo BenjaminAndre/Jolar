@@ -29,6 +29,7 @@ jobs:
       run: |
         COMMIT_HASH=$(git rev-parse --short HEAD)
         BUILD_DATE=$(date -u +"%Y-%m-%d %H:%M UTC")
+        echo "Commit: $COMMIT_HASH | Built: $BUILD_DATE"
         echo "Commit: $COMMIT_HASH | Built: $BUILD_DATE" > build_info.txt
 
   

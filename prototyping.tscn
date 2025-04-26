@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g07j6"]
 bg_color = Color(0.917647, 0.45098, 0, 0.27451)
 
-[node name="Racine" type="Node3D"]
+[node name="Node" type="Node"]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
