@@ -1,11 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://djqvc7b4i8rwt"]
+[gd_scene load_steps=11 format=3 uid="uid://djqvc7b4i8rwt"]
 
+[ext_resource type="Script" path="res://src/battle_handler.gd" id="1_ana2f"]
 [ext_resource type="Script" path="res://build_info_display.gd" id="1_cosob"]
+[ext_resource type="Script" path="res://src/battle_state_machine.gd" id="2_uk0mi"]
+[ext_resource type="Theme" uid="uid://4p8ffht1m3je" path="res://main_theme.tres" id="4_00ll3"]
+[ext_resource type="Script" path="res://src/ui/debug_info.gd" id="4_g7eam"]
+[ext_resource type="Script" path="res://src/ui/character_action.gd" id="7_fu2if"]
+[ext_resource type="Script" path="res://src/ui/creature_action.gd" id="8_1l3ry"]
+[ext_resource type="Script" path="res://src/ui/resolution.gd" id="8_ic1bp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g07j6"]
 bg_color = Color(0.917647, 0.45098, 0, 0.27451)
 
-[node name="Node" type="Node"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnoj1"]
+bg_color = Color(0.709804, 0, 0.509804, 0.184314)
+
+[node name="BattleHandler" type="Node"]
+script = ExtResource("1_ana2f")
+
+[node name="BattleStateMachine" type="Node" parent="."]
+script = ExtResource("2_uk0mi")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -32,5 +46,145 @@ size_flags_horizontal = 4
 
 [node name="Text" type="Label" parent="UI/BuildMetadata/HBoxContainer"]
 layout_mode = 2
-text = "Bonjour, je suis un jeu pas très avancé mais bien automatisé"
+text = "DEBUG LABEL"
 script = ExtResource("1_cosob")
+
+[node name="DebugInfo" type="PanelContainer" parent="UI"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lnoj1")
+script = ExtResource("4_g7eam")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DebugInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DebugInfo/MarginContainer"]
+layout_mode = 2
+
+[node name="BattleState" type="HBoxContainer" parent="UI/DebugInfo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/DebugInfo/MarginContainer/VBoxContainer/BattleState"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_00ll3")
+text = "Battle State : "
+fit_content = true
+
+[node name="Value" type="RichTextLabel" parent="UI/DebugInfo/MarginContainer/VBoxContainer/BattleState"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_00ll3")
+text = "00"
+fit_content = true
+
+[node name="Actions" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterAction" type="PanelContainer" parent="UI/Actions"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("7_fu2if")
+
+[node name="GridContainer" type="GridContainer" parent="UI/Actions/CharacterAction"]
+layout_mode = 2
+columns = 2
+
+[node name="Command" type="Button" parent="UI/Actions/CharacterAction/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_00ll3")
+text = "Commander"
+
+[node name="Change" type="Button" parent="UI/Actions/CharacterAction/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_00ll3")
+text = "Changer"
+
+[node name="Move" type="Button" parent="UI/Actions/CharacterAction/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_00ll3")
+text = "Se déplacer"
+
+[node name="Follow" type="Button" parent="UI/Actions/CharacterAction/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_00ll3")
+text = "Suivre"
+
+[node name="CreatureAction" type="PanelContainer" parent="UI/Actions"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("8_1l3ry")
+
+[node name="GridContainer" type="GridContainer" parent="UI/Actions/CreatureAction"]
+layout_mode = 2
+columns = 2
+
+[node name="Action0" type="Button" parent="UI/Actions/CreatureAction/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_00ll3")
+text = "Action 0"
+
+[node name="Action1" type="Button" parent="UI/Actions/CreatureAction/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_00ll3")
+text = "Action 1"
+
+[node name="Action2" type="Button" parent="UI/Actions/CreatureAction/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_00ll3")
+text = "Action 2"
+
+[node name="Action3" type="Button" parent="UI/Actions/CreatureAction/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_00ll3")
+text = "Action 3"
+
+[node name="Resolution" type="PanelContainer" parent="UI/Actions"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("8_ic1bp")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Actions/Resolution"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="MyAction" type="RichTextLabel" parent="UI/Actions/Resolution/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_00ll3")
+theme_override_font_sizes/normal_font_size = 28
+text = "Default"
+fit_content = true
+autowrap_mode = 0
+
+[connection signal="button_up" from="UI/Actions/CharacterAction/GridContainer/Command" to="UI/Actions/CharacterAction" method="_on_button_up" binds= [0]]
+[connection signal="button_up" from="UI/Actions/CharacterAction/GridContainer/Change" to="UI/Actions/CharacterAction" method="_on_button_up" binds= [1]]
+[connection signal="button_up" from="UI/Actions/CharacterAction/GridContainer/Move" to="UI/Actions/CharacterAction" method="_on_button_up" binds= [2]]
+[connection signal="button_up" from="UI/Actions/CharacterAction/GridContainer/Follow" to="UI/Actions/CharacterAction" method="_on_button_up" binds= [3]]
+[connection signal="button_up" from="UI/Actions/CreatureAction/GridContainer/Action0" to="UI/Actions/CreatureAction" method="_on_button_up" binds= [0]]
+[connection signal="button_up" from="UI/Actions/CreatureAction/GridContainer/Action1" to="UI/Actions/CreatureAction" method="_on_button_up" binds= [1]]
+[connection signal="button_up" from="UI/Actions/CreatureAction/GridContainer/Action2" to="UI/Actions/CreatureAction" method="_on_button_up" binds= [2]]
+[connection signal="button_up" from="UI/Actions/CreatureAction/GridContainer/Action3" to="UI/Actions/CreatureAction" method="_on_button_up" binds= [3]]

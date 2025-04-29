@@ -1,1 +1,1 @@
-Commit: a1b2c3d | Built: 2025-04-26 19:35 UTC blablabla
+Commit: --- | Built: ---
