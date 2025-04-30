@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Creature" load_steps=8 format=3 uid="uid://cv6ewpg0hgrce"]
+
+[ext_resource type="Script" path="res://src/res/move.gd" id="1_h8i8s"]
+[ext_resource type="Script" path="res://src/res/creature.gd" id="2_esa53"]
+[ext_resource type="Resource" uid="uid://b5o7xgbytv37p" path="res://res/moves/depollute.tres" id="2_pk2qv"]
+[ext_resource type="Texture2D" uid="uid://cs3y2id5x8nck" path="res://img/tarot.png" id="3_eri4r"]
+[ext_resource type="Resource" uid="uid://bmupl7dwara78" path="res://res/moves/collect.tres" id="3_j01os"]
+[ext_resource type="Resource" uid="uid://c0rxy2nh0jj6u" path="res://res/moves/punch.tres" id="4_ueabe"]
+[ext_resource type="Resource" uid="uid://cjhonuj17nwnd" path="res://res/moves/drop.tres" id="5_gy0hd"]
+
+[resource]
+script = ExtResource("2_esa53")
+name = "Tarot"
+type = 1
+sprite = ExtResource("3_eri4r")
+base_health = 25
+moves = Array[ExtResource("1_h8i8s")]([ExtResource("2_pk2qv"), ExtResource("3_j01os"), ExtResource("4_ueabe"), ExtResource("5_gy0hd")])
+base_toothy = 0.0
+base_wavy = 0.0
+base_blocky = 0.0

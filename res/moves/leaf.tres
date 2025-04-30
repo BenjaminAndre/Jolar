@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Move" load_steps=2 format=3 uid="uid://b6hmkqfwi2mpp"]
+
+[ext_resource type="Script" path="res://src/res/move.gd" id="1_0in4u"]
+
+[resource]
+script = ExtResource("1_0in4u")
+name = "Feuille"
+type = 2
+alteration_effect = 0.05
+erosion_bonus = 0.0
+collect_effect = 0.0
+this_toothy_effect = 0.0
+this_wavy_effect = 0.0
+this_blocky_effect = 0.0
+this_health_effect = 0
+other_toothy_effect = 0.0
+other_wavy_effect = 0.0
+other_blocky_effect = 0.0
+other_health_effect = -5

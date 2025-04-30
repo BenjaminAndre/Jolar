@@ -1,6 +1,14 @@
 extends Node
 
+enum Type {
+    NEUTRAL,
+    WATER,
+    PLANT,
+    FIRE,
+}
+
 enum BattleState {
+    ENTER_BATTLE,
     PLAYER_CHOOSES_CHARACTER_ACTION,
     PLAYER_CHOOSES_CREATURE_ACTION,
     WAITING_FOR_OTHER_PLAYER,

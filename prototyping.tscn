@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://djqvc7b4i8rwt"]
+[gd_scene load_steps=13 format=3 uid="uid://djqvc7b4i8rwt"]
 
 [ext_resource type="Script" path="res://src/battle_handler.gd" id="1_ana2f"]
 [ext_resource type="Script" path="res://build_info_display.gd" id="1_cosob"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://src/ui/character_action.gd" id="7_fu2if"]
 [ext_resource type="Script" path="res://src/ui/creature_action.gd" id="8_1l3ry"]
 [ext_resource type="Script" path="res://src/ui/resolution.gd" id="8_ic1bp"]
+[ext_resource type="PackedScene" uid="uid://die38voigggro" path="res://scn/creature.tscn" id="9_08g13"]
+[ext_resource type="Resource" uid="uid://cv6ewpg0hgrce" path="res://res/creatures/tarot.tres" id="10_sdqkv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g07j6"]
 bg_color = Color(0.917647, 0.45098, 0, 0.27451)
@@ -179,6 +181,17 @@ theme_override_font_sizes/normal_font_size = 28
 text = "Default"
 fit_content = true
 autowrap_mode = 0
+
+[node name="World" type="Node2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Camera2D" type="Camera2D" parent="World"]
+
+[node name="ThisCreature" parent="World" instance=ExtResource("9_08g13")]
+
+[node name="OtherCreature" parent="World" instance=ExtResource("9_08g13")]
+position = Vector2(256, -241)
+creature = ExtResource("10_sdqkv")
 
 [connection signal="button_up" from="UI/Actions/CharacterAction/GridContainer/Command" to="UI/Actions/CharacterAction" method="_on_button_up" binds= [0]]
 [connection signal="button_up" from="UI/Actions/CharacterAction/GridContainer/Change" to="UI/Actions/CharacterAction" method="_on_button_up" binds= [1]]
