@@ -183,14 +183,15 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="World" type="Node2D" parent="."]
-position = Vector2(576, 324)
 
 [node name="Camera2D" type="Camera2D" parent="World"]
+anchor_mode = 0
 
 [node name="ThisCreature" parent="World" instance=ExtResource("9_08g13")]
+position = Vector2(288, 557)
 
 [node name="OtherCreature" parent="World" instance=ExtResource("9_08g13")]
-position = Vector2(256, -241)
+position = Vector2(832, 109)
 creature = ExtResource("10_sdqkv")
 
 [connection signal="button_up" from="UI/Actions/CharacterAction/GridContainer/Command" to="UI/Actions/CharacterAction" method="_on_button_up" binds= [0]]
