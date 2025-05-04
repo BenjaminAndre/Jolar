@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Enums="*res://src/global/enums.gd"
 Signals="*res://src/global/signals.gd"
+BattleContainer="*res://src/global/battle_container.gd"
 
 [rendering]
 

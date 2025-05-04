@@ -46,7 +46,47 @@ func _on_creature_chosen(value: int) -> void :
 
 func _on_resolution_ended() -> void :
     if current_state == Enums.BattleState.ACTIONS_RESOLUTION :
-        other_creature.creature.health += last_chosen_capacity.other_health_effect
+        var is_slower = this_creature.creature.speed < other_creature.creature.speed
+        var other_capacity = other_creature.creature.moves[randi()%4]
+        
+        var first_to_play = this_creature.creature
+        var second_to_play = other_creature.creature
+        var first_capacity = last_chosen_capacity
+        var second_capacity = other_capacity
+        
+        if is_slower :
+            first_to_play = other_creature.creature
+            second_to_play = this_creature.creature
+            first_capacity = other_creature
+            second_capacity = last_chosen_capacity
+            
+        _apply_move(first_capacity, first_to_play, second_to_play)
+        
         current_state = Enums.BattleState.PLAYER_CHOOSES_CHARACTER_ACTION
         if this_creature.creature.health <= 0 or other_creature.creature.health <= 0 :
             current_state = Enums.BattleState.BATTLE_REPORT
+        else :
+            _apply_move(second_capacity, second_to_play, first_to_play)
+            if this_creature.creature.health <= 0 or other_creature.creature.health <= 0 :
+                current_state = Enums.BattleState.BATTLE_REPORT
+            
+            
+            
+func _apply_move(move : Move, from : Creature, to : Creature):
+    # Healing
+    from.health = min(from.temp_health, from.health + move.this_health_effect)
+    
+    # Damage
+    # (ATT-DEF) / 10 en pourcent de dmg en plus
+    var modifier = (from.attack - to.defense) / 10.0 + 1
+    var dmg = -move.other_health_effect * modifier
+    var erosion = max(0,int(ceil(dmg * ( 0.1 + move.erosion_bonus)))) #arrondi a 1
+    to.health -= int(dmg)
+    to.temp_health -= erosion
+    
+    # Altération
+    BattleContainer.alteration += move.alteration_effect
+    
+    # Fruits
+    BattleContainer.remaining_fruits -= move.collect_effect
+    

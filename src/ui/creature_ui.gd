@@ -9,5 +9,5 @@ func _ready() -> void:
     name_label.text = creature.name
 
 func _process(delta: float) -> void:
-    pv_label.text = str(creature.health) + "/" + str(creature.base_health)
+    pv_label.text = str(creature.health) + "/" + str(creature.temp_health)
     

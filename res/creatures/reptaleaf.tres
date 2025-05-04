@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Creature" load_steps=8 format=3 uid="uid://co0y1hgm7e6vm"]
+[gd_resource type="Resource" script_class="Creature" load_steps=7 format=3 uid="uid://co0y1hgm7e6vm"]
 
 [ext_resource type="Script" path="res://src/res/move.gd" id="1_n56ej"]
 [ext_resource type="Resource" uid="uid://bmupl7dwara78" path="res://res/moves/collect.tres" id="2_ksrbh"]
@@ -6,15 +6,13 @@
 [ext_resource type="Resource" uid="uid://b6hmkqfwi2mpp" path="res://res/moves/leaf.tres" id="3_uupom"]
 [ext_resource type="Resource" uid="uid://b5o7xgbytv37p" path="res://res/moves/depollute.tres" id="4_r663p"]
 [ext_resource type="Resource" uid="uid://c0rxy2nh0jj6u" path="res://res/moves/punch.tres" id="5_txh4v"]
-[ext_resource type="Texture2D" uid="uid://0fnop1jmy71o" path="res://img/reptaleaf.png" id="7_u7dyd"]
 
 [resource]
 script = ExtResource("2_wd8vm")
 name = "Reptaleaf"
 type = 2
-sprite = ExtResource("7_u7dyd")
-base_health = 25
 moves = Array[ExtResource("1_n56ej")]([ExtResource("2_ksrbh"), ExtResource("3_uupom"), ExtResource("4_r663p"), ExtResource("5_txh4v")])
-base_toothy = 0.0
-base_wavy = 0.0
-base_blocky = 0.0
+base_health = 25
+base_attack = 10
+base_defense = 7
+base_speed = 5

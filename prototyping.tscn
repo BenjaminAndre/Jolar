@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djqvc7b4i8rwt"]
+[gd_scene load_steps=20 format=3 uid="uid://djqvc7b4i8rwt"]
 
 [ext_resource type="Script" path="res://src/battle_handler.gd" id="1_ana2f"]
 [ext_resource type="Script" path="res://build_info_display.gd" id="1_cosob"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://src/ui/resolution.gd" id="8_ic1bp"]
 [ext_resource type="PackedScene" uid="uid://die38voigggro" path="res://scn/creature.tscn" id="9_08g13"]
 [ext_resource type="Resource" uid="uid://cv6ewpg0hgrce" path="res://res/creatures/tarot.tres" id="10_sdqkv"]
+[ext_resource type="Script" path="res://src/ui/victory_tree.gd" id="11_harhr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g07j6"]
 bg_color = Color(0.917647, 0.45098, 0, 0.27451)
@@ -25,6 +26,20 @@ height = 6.0
 [sub_resource type="Environment" id="Environment_l8pob"]
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wbwso"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_74hqb"]
+viewport_path = NodePath("World/VictoryTree/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33a65"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_74hqb")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_pqw6u"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_33a65")
 
 [node name="BattleHandler" type="Node"]
 script = ExtResource("1_ana2f")
@@ -215,6 +230,41 @@ light_color = Color(0.999999, 0.666457, 0.421211, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_l8pob")
+
+[node name="VictoryTree" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.796113, 0)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="World/VictoryTree"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.479157, -2.13753)
+mesh = SubResource("CapsuleMesh_wbwso")
+
+[node name="Plane" type="MeshInstance3D" parent="World/VictoryTree"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67261, -2.13753)
+mesh = SubResource("QuadMesh_pqw6u")
+
+[node name="SubViewport" type="SubViewport" parent="World/VictoryTree"]
+size = Vector2i(128, 128)
+
+[node name="PanelContainer" type="PanelContainer" parent="World/VictoryTree/SubViewport"]
+custom_minimum_size = Vector2(250, 0)
+offset_right = 250.0
+offset_bottom = 512.0
+size_flags_horizontal = 4
+script = ExtResource("11_harhr")
+
+[node name="Data" type="VBoxContainer" parent="World/VictoryTree/SubViewport/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Fruits" type="RichTextLabel" parent="World/VictoryTree/SubViewport/PanelContainer/Data"]
+layout_mode = 2
+text = "10"
+fit_content = true
+
+[node name="Alteration" type="RichTextLabel" parent="World/VictoryTree/SubViewport/PanelContainer/Data"]
+layout_mode = 2
+text = "10%"
+fit_content = true
 
 [connection signal="button_up" from="UI/Actions/CharacterAction/GridContainer/Command" to="UI/Actions/CharacterAction" method="_on_button_up" binds= [0]]
 [connection signal="button_up" from="UI/Actions/CharacterAction/GridContainer/Change" to="UI/Actions/CharacterAction" method="_on_button_up" binds= [1]]

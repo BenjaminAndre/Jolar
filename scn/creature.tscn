@@ -8,14 +8,14 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_hbgtp"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2f8j"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moh7o"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_hbgtp")
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_xudlt"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_v2f8j")
+material = SubResource("StandardMaterial3D_moh7o")
 
 [node name="Creature" type="Node3D"]
 script = ExtResource("1_j0pwg")
