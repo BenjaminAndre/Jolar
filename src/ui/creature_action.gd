@@ -1,7 +1,7 @@
 extends PanelContainer
 
 @onready var battle_state_machine: Node = $"../../../BattleStateMachine"
-@onready var this_creature: Node2D = $"../../../World/ThisCreature"
+@onready var this_creature: Node = $"../../../World/ThisCreature"
 
 @onready var action_0: Button = $GridContainer/Action0
 @onready var action_1: Button = $GridContainer/Action1

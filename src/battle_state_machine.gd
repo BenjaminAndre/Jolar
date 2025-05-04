@@ -1,8 +1,8 @@
 extends Node
 
 const TIME_TO_PREPARE : float = 3.0
-@onready var this_creature: Node2D = $"../World/ThisCreature"
-@onready var other_creature: Node2D = $"../World/OtherCreature"
+@onready var this_creature: Node3D = $"../World/ThisCreature"
+@onready var other_creature: Node3D = $"../World/OtherCreature"
 
 var current_state : Enums.BattleState
 var last_state : Enums.BattleState

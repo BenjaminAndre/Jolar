@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://djqvc7b4i8rwt"]
+[gd_scene load_steps=15 format=3 uid="uid://djqvc7b4i8rwt"]
 
 [ext_resource type="Script" path="res://src/battle_handler.gd" id="1_ana2f"]
 [ext_resource type="Script" path="res://build_info_display.gd" id="1_cosob"]
@@ -17,6 +17,15 @@ bg_color = Color(0.917647, 0.45098, 0, 0.27451)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnoj1"]
 bg_color = Color(0.709804, 0, 0.509804, 0.184314)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_grl44"]
+top_radius = 10.0
+bottom_radius = 15.0
+height = 6.0
+
+[sub_resource type="Environment" id="Environment_l8pob"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
 [node name="BattleHandler" type="Node"]
 script = ExtResource("1_ana2f")
 
@@ -30,6 +39,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="BuildMetadata" type="PanelContainer" parent="UI"]
 custom_minimum_size = Vector2(0, 30)
@@ -182,17 +193,28 @@ text = "Default"
 fit_content = true
 autowrap_mode = 0
 
-[node name="World" type="Node2D" parent="."]
+[node name="World" type="Node3D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="World"]
-anchor_mode = 0
+[node name="Camera2D" type="Camera3D" parent="World"]
+transform = Transform3D(0.955403, -0.114009, 0.272411, -0.0212155, 0.893586, 0.44839, -0.294543, -0.434173, 0.851316, 2.88978, 2.17399, 3.19621)
 
 [node name="ThisCreature" parent="World" instance=ExtResource("9_08g13")]
-position = Vector2(288, 557)
+transform = Transform3D(0.983694, 0, -0.17985, 0, 1, 0, 0.17985, 0, 0.983694, 0.512895, 0.167417, 1.67465)
 
 [node name="OtherCreature" parent="World" instance=ExtResource("9_08g13")]
-position = Vector2(832, 109)
+transform = Transform3D(0.948041, 0, -0.318149, 0, 1, 0, 0.318149, 0, 0.948041, 3.97605, 0, -1.76729)
 creature = ExtResource("10_sdqkv")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+mesh = SubResource("CylinderMesh_grl44")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.914642, -0.349976, -0.202352, 0.404264, 0.791816, 0.457819, 0, -0.500544, 0.865711, -14.3637, 3.47364, 18.0998)
+light_color = Color(0.999999, 0.666457, 0.421211, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_l8pob")
 
 [connection signal="button_up" from="UI/Actions/CharacterAction/GridContainer/Command" to="UI/Actions/CharacterAction" method="_on_button_up" binds= [0]]
 [connection signal="button_up" from="UI/Actions/CharacterAction/GridContainer/Change" to="UI/Actions/CharacterAction" method="_on_button_up" binds= [1]]

@@ -3,8 +3,8 @@ extends Node
 var remaining_fruits : int
 var alteration : float #0 to 1
 
-@onready var this_creature: Node2D = $World/ThisCreature
-@onready var other_creature: Node2D = $World/OtherCreature
+@onready var this_creature: Node= $World/ThisCreature
+@onready var other_creature: Node = $World/OtherCreature
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
