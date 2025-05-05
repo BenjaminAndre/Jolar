@@ -111,6 +111,23 @@ theme = ExtResource("4_00ll3")
 text = "00"
 fit_content = true
 
+[node name="ResolveState" type="HBoxContainer" parent="UI/DebugInfo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/DebugInfo/MarginContainer/VBoxContainer/ResolveState"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_00ll3")
+text = "Resolution : "
+fit_content = true
+
+[node name="Value" type="RichTextLabel" parent="UI/DebugInfo/MarginContainer/VBoxContainer/ResolveState"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_00ll3")
+text = "00"
+fit_content = true
+
 [node name="Actions" type="PanelContainer" parent="UI"]
 layout_mode = 1
 anchors_preset = 8

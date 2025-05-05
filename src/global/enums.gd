@@ -19,6 +19,11 @@ enum BattleState {
     BATTLE_REWARDS,
 }
 
+enum ActionResolutionState {
+    RESOLVING_PLAYER_ACTION,
+    RESOLVING_OTHER_ACTION
+}
+
 enum CharacterAction {
     COMMAND_CREATURE,
     CHANGE_CREATURE,

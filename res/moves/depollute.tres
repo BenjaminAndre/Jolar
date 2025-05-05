@@ -6,14 +6,8 @@
 script = ExtResource("1_gflem")
 name = "Dépolluer"
 type = 0
-alteration_effect = -0.1
+alteration_effect = -10.0
 erosion_bonus = 0.0
 collect_effect = 0.0
-this_toothy_effect = 0.0
-this_wavy_effect = 0.0
-this_blocky_effect = 0.0
 this_health_effect = 0
-other_toothy_effect = 0.0
-other_wavy_effect = 0.0
-other_blocky_effect = 0.0
 other_health_effect = 0

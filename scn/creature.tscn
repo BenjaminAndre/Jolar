@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://die38voigggro"]
+[gd_scene load_steps=8 format=3 uid="uid://die38voigggro"]
 
 [ext_resource type="Script" path="res://src/ui/creature_ui.gd" id="1_j0pwg"]
 [ext_resource type="Resource" uid="uid://co0y1hgm7e6vm" path="res://res/creatures/reptaleaf.tres" id="2_1nl0g"]
+[ext_resource type="Theme" uid="uid://4p8ffht1m3je" path="res://main_theme.tres" id="3_6f2sx"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_pnsae"]
 
@@ -32,26 +33,32 @@ mesh = SubResource("QuadMesh_xudlt")
 size = Vector2i(128, 128)
 
 [node name="PanelContainer" type="PanelContainer" parent="SubViewport"]
-custom_minimum_size = Vector2(250, 0)
-offset_right = 250.0
-offset_bottom = 512.0
-size_flags_horizontal = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_6f2sx")
 
 [node name="Data" type="VBoxContainer" parent="SubViewport/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("3_6f2sx")
 
 [node name="Name" type="RichTextLabel" parent="SubViewport/PanelContainer/Data"]
 layout_mode = 2
+theme = ExtResource("3_6f2sx")
 text = "Nom"
 fit_content = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SubViewport/PanelContainer/Data"]
 layout_mode = 2
+theme = ExtResource("3_6f2sx")
 text = "PV"
 fit_content = true
 
 [node name="PV" type="RichTextLabel" parent="SubViewport/PanelContainer/Data"]
 layout_mode = 2
+theme = ExtResource("3_6f2sx")
 text = "25"
 fit_content = true

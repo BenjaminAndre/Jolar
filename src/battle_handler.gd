@@ -6,10 +6,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    this_creature.creature.health = this_creature.creature.base_health
-    this_creature.creature.temp_health = this_creature.creature.base_health
-    other_creature.creature.health = other_creature.creature.base_health
-    other_creature.creature.temp_health = other_creature.creature.base_health
+    pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
